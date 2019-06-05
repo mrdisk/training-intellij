@@ -69,11 +69,6 @@ public class ContactResourceRESTService {
     }
 
     // delete all contacts
-    @DELETE
-    public Response removeAllContacts() {
-        contactsRepository.clear();
-        return Response.ok().build();
-    }
 
     // delete a specific contact
     @DELETE
