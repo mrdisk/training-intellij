@@ -62,7 +62,7 @@ public class ContactResourceRESTService {
             Response.ok(contact).build();
         } catch (Exception e) {
             // Handle generic exceptions
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
 
         return builder.build();
