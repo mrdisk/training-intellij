@@ -48,21 +48,16 @@ public class ContactResourceRESTService {
 
         Response.ResponseBuilder builder = null;
         Long nextId = contactsRepository.keySet().size() + 1L;
-
-        if (contact.getName()==null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-
         try {
             // Store the contact
             contact.setId(nextId);
             contactsRepository.put(nextId, contact);
 
             // Create an "ok" response with the persisted contact
-            Response.ok(contact).build();
+            builder = Response.ok(contact);
         } catch (Exception e) {
             // Handle generic exceptions
-           return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage());
         }
 
         return builder.build();
